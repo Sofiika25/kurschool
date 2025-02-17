@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/clouds"
+    android:padding="16dp"
+    tools:context=".Authorization">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="220dp"
+        app:cardCornerRadius="10dp"
+        app:cardUseCompatPadding="true">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="8dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp"
+                android:background="@color/purple_700">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Логин:"
+                    android:textSize="20sp"
+                    android:textColor="#fff"
+                    android:fontFamily="@font/montsbold"
+                    android:layout_marginBottom="8dp"/>
+
+                <EditText
+                    android:id="@+id/usernameEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:background="#E8EAF6"
+                    android:fontFamily="@font/montslight"
+                    android:padding="8dp"
+                    android:layout_marginBottom="16dp"
+                    android:hint="Введите логин"
+                    android:inputType="text"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Пароль:"
+                    android:textSize="20sp"
+                    android:textColor="#fff"
+                    android:fontFamily="@font/montsbold"
+                    android:layout_marginBottom="8dp"/>
+
+                <EditText
+                    android:id="@+id/passwordEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:background="#E8EAF6"
+                    android:fontFamily="@font/montslight"
+                    android:padding="8dp"
+                    android:layout_marginBottom="24dp"
+                    android:hint="Введите пароль"
+                    android:inputType="textPassword"/>
+
+                <Button
+                    android:id="@+id/loginButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Войти"
+                    android:fontFamily="@font/montsbold"
+                    android:textColor="#fff"
+                    android:background="@drawable/rounded_button"
+                    android:textSize="20sp"
+                    />
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+</LinearLayout>
