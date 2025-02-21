@@ -13,6 +13,39 @@
         android:theme="@style/Theme.KuratorSchool"
         tools:targetApi="31">
         <activity
+            android:name=".kur_info"
+            android:exported="false" />
+        <activity
+            android:name=".add_activnost"
+            android:exported="false" />
+        <activity
+            android:name=".activnosti_display"
+            android:exported="false" />
+        <activity
+            android:name=".my_group_display"
+            android:exported="false" />
+        <activity
+            android:name=".kur_group_menu"
+            android:exported="false" />
+        <activity
+            android:name=".case1"
+            android:exported="false" />
+        <activity
+            android:name=".test1"
+            android:exported="false" />
+        <activity
+            android:name=".cases_display"
+            android:exported="false" />
+        <activity
+            android:name=".tests_display"
+            android:exported="false" />
+        <activity
+            android:name=".lections_display"
+            android:exported="false" />
+        <activity
+            android:name=".kur_menu"
+            android:exported="false" />
+        <activity
             android:name=".zayavka_for_school"
             android:exported="false" />
         <activity
@@ -38,7 +71,7 @@
             android:name=".MainActivity"
             android:exported="false"
             android:label="@string/app_name"
-            android:theme="@style/Theme.KuratorSchool"/>
+            android:theme="@style/Theme.KuratorSchool" />
     </application>
 
 </manifest>

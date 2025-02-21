@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/purple_200"
+    tools:context=".kur_menu">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:orientation="horizontal"
+        android:background="@color/purple_500"
+        android:padding="16dp">
+        <TextView
+            android:id="@+id/btn_exit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Выход"
+            android:fontFamily="@font/montsbold"
+            android:textSize="16sp"
+            android:textColor="#3C34C5"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"/>
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="110dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/round_card"
+            android:elevation="4dp"
+            android:orientation="horizontal"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/montsbold"
+                android:text="Моя группа"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                android:gravity="center_vertical"/>
+
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/people"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="10dp"
+                android:layout_alignParentRight="true"/>
+        </RelativeLayout>
+        <!-- Контент: "Лекции", "Тесты", "Кейсы", "Игры" -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="16dp"
+            android:layout_marginVertical="120dp">
+
+            <!-- Кнопка "Лекции" -->
+            <Button
+                android:id="@+id/btn_lectures"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Список"
+                android:fontFamily="@font/montsbold"
+                android:textColor="#fff"
+                android:background="@drawable/rounded_button"
+                android:textSize="20sp"
+                android:layout_marginBottom="8dp" />
+
+            <!-- Кнопка "Тесты" -->
+            <Button
+                android:id="@+id/btn_tests"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Активность"
+                android:fontFamily="@font/montsbold"
+                android:textColor="#fff"
+                android:background="@drawable/rounded_button"
+                android:textSize="20sp"
+                android:layout_marginBottom="8dp" />
+        </LinearLayout>
+    </LinearLayout>
+    <!-- Нижний бар -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:orientation="horizontal"
+            android:background="@color/purple_500"
+            android:layout_alignParentBottom="true">
+
+            <ImageView
+                android:id="@+id/btn_profile"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:src="@drawable/sh_y"
+                android:layout_gravity="center"/>
+
+            <ImageView
+                android:id="@+id/btn_team"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:src="@drawable/peop_w"
+                android:layout_gravity="center"/>
+
+            <ImageView
+                android:id="@+id/btn_tasks"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:src="@drawable/mat_y"
+                android:layout_gravity="center"/>
+        </LinearLayout>
+    </RelativeLayout>
+
+</LinearLayout>
