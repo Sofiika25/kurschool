@@ -20,7 +20,7 @@ class Authorization : AppCompatActivity() {
         }
         val loginButton: Button = findViewById(R.id.loginButton)
         loginButton.setOnClickListener{
-            val intent = Intent(this, stud_menu::class.java)
+            val intent = Intent(this, kur_menu::class.java)
             startActivity(intent)
             finish()
         }

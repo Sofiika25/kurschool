@@ -14,7 +14,7 @@
         android:background="@color/purple_500"
         android:padding="16dp">
         <TextView
-            android:id="@+id/btn_exit"
+            android:id="@+id/btn_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Назад"

@@ -15,7 +15,7 @@
         android:background="@color/purple_500"
         android:padding="16dp">
         <TextView
-            android:id="@+id/btn_exit"
+            android:id="@+id/btn_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Назад"
@@ -42,125 +42,178 @@
                     android:orientation="vertical"
                     android:padding="10dp">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Логин:"
-                        android:textSize="20sp"
-                        android:textColor="@color/purple_700"
-                        android:fontFamily="@font/montsbold"
-                        android:layout_marginBottom="8dp"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="ФИО:"
+                            android:textSize="20sp"
+                            android:textColor="@color/purple_700"
+                            android:fontFamily="@font/montsbold"
+                            android:layout_marginBottom="8dp"/>
 
-                    <EditText
-                        android:id="@+id/usernameEditText"
-                        android:layout_width="match_parent"
-                        android:layout_height="48dp"
-                        android:background="#E8EAF6"
-                        android:fontFamily="@font/montslight"
-                        android:padding="8dp"
-                        android:layout_marginBottom="16dp"
-                        android:hint="Введите логин"
-                        android:inputType="text"/>
+                        <EditText
+                            android:id="@+id/usernameEditText"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:background="#E8EAF6"
+                            android:fontFamily="@font/montslight"
+                            android:padding="8dp"
+                            android:layout_marginBottom="16dp"
+                            android:hint="Введите ваше ФИО"
+                            android:inputType="text"/>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Пароль:"
-                        android:textSize="20sp"
-                        android:textColor="@color/purple_700"
-                        android:fontFamily="@font/montsbold"
-                        android:layout_marginBottom="8dp"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Номер группы:"
+                            android:textSize="20sp"
+                            android:textColor="@color/purple_700"
+                            android:fontFamily="@font/montsbold"
+                            android:layout_marginBottom="8dp"/>
 
-                    <EditText
-                        android:id="@+id/passwordEditText"
-                        android:layout_width="match_parent"
-                        android:layout_height="48dp"
-                        android:background="#E8EAF6"
-                        android:fontFamily="@font/montslight"
-                        android:padding="8dp"
-                        android:layout_marginBottom="24dp"
-                        android:hint="Введите пароль"
-                        android:inputType="textPassword"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Логин:"
-                        android:textSize="20sp"
-                        android:textColor="@color/purple_700"
-                        android:fontFamily="@font/montsbold"
-                        android:layout_marginBottom="8dp"/>
+                        <EditText
+                            android:id="@+id/passwordEditText"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:background="#E8EAF6"
+                            android:fontFamily="@font/montslight"
+                            android:padding="8dp"
+                            android:layout_marginBottom="24dp"
+                            android:hint="Введите номер группы"
+                            android:inputType="textPassword"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Контактный номер телефона:"
+                            android:textSize="20sp"
+                            android:textColor="@color/purple_700"
+                            android:fontFamily="@font/montsbold"
+                            android:layout_marginBottom="8dp"/>
 
-                    <EditText
-                        android:id="@+id/jh"
-                        android:layout_width="match_parent"
-                        android:layout_height="48dp"
-                        android:background="#E8EAF6"
-                        android:fontFamily="@font/montslight"
-                        android:padding="8dp"
-                        android:layout_marginBottom="16dp"
-                        android:hint="Введите логин"
-                        android:inputType="text"/>
+                        <EditText
+                            android:id="@+id/jh"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:background="#E8EAF6"
+                            android:fontFamily="@font/montslight"
+                            android:padding="8dp"
+                            android:layout_marginBottom="16dp"
+                            android:hint="Введите номер телефона"
+                            android:inputType="text"/>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Пароль:"
-                        android:textSize="20sp"
-                        android:textColor="@color/purple_700"
-                        android:fontFamily="@font/montsbold"
-                        android:layout_marginBottom="8dp"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Ссылка на страницу VK:"
+                            android:textSize="20sp"
+                            android:textColor="@color/purple_700"
+                            android:fontFamily="@font/montsbold"
+                            android:layout_marginBottom="8dp"/>
 
-                    <EditText
-                        android:id="@+id/pa"
-                        android:layout_width="match_parent"
-                        android:layout_height="48dp"
-                        android:background="#E8EAF6"
-                        android:fontFamily="@font/montslight"
-                        android:padding="8dp"
-                        android:layout_marginBottom="24dp"
-                        android:hint="Введите пароль"
-                        android:inputType="textPassword"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Логин:"
-                        android:textSize="20sp"
-                        android:textColor="@color/purple_700"
-                        android:fontFamily="@font/montsbold"
-                        android:layout_marginBottom="8dp"/>
+                        <EditText
+                            android:id="@+id/pa"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:background="#E8EAF6"
+                            android:fontFamily="@font/montslight"
+                            android:padding="8dp"
+                            android:layout_marginBottom="24dp"
+                            android:hint="Введите ссылку на VK"
+                            android:inputType="textPassword"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Аккаунт в Telegram:"
+                            android:textSize="20sp"
+                            android:textColor="@color/purple_700"
+                            android:fontFamily="@font/montsbold"
+                            android:layout_marginBottom="8dp"/>
 
-                    <EditText
-                        android:id="@+id/u"
-                        android:layout_width="match_parent"
-                        android:layout_height="48dp"
-                        android:background="#E8EAF6"
-                        android:fontFamily="@font/montslight"
-                        android:padding="8dp"
-                        android:layout_marginBottom="16dp"
-                        android:hint="Введите логин"
-                        android:inputType="text"/>
+                        <EditText
+                            android:id="@+id/u"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:background="#E8EAF6"
+                            android:fontFamily="@font/montslight"
+                            android:padding="8dp"
+                            android:layout_marginBottom="16dp"
+                            android:hint="Введите ссылку на Tg"
+                            android:inputType="text"/>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Пароль:"
-                        android:textSize="20sp"
-                        android:textColor="@color/purple_700"
-                        android:fontFamily="@font/montsbold"
-                        android:layout_marginBottom="8dp"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Почему я решил стать куратором:"
+                            android:textSize="20sp"
+                            android:textColor="@color/purple_700"
+                            android:fontFamily="@font/montsbold"
+                            android:layout_marginBottom="8dp"/>
 
-                    <EditText
-                        android:id="@+id/p"
-                        android:layout_width="match_parent"
-                        android:layout_height="48dp"
-                        android:background="#E8EAF6"
-                        android:fontFamily="@font/montslight"
-                        android:padding="8dp"
-                        android:layout_marginBottom="24dp"
-                        android:hint="Введите пароль"
-                        android:inputType="textPassword"/>
+                        <EditText
+                            android:id="@+id/p"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:background="#E8EAF6"
+                            android:fontFamily="@font/montslight"
+                            android:padding="8dp"
+                            android:layout_marginBottom="24dp"
+                            android:hint="Развернутый ответ"
+                            android:inputType="textPassword"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Мои положительные качества личности, которые помогут мне в роли куратора"
+                            android:textSize="20sp"
+                            android:textColor="@color/purple_700"
+                            android:fontFamily="@font/montsbold"
+                            android:layout_marginBottom="8dp"/>
+                        <EditText
+                            android:id="@+id/pp"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:background="#E8EAF6"
+                            android:fontFamily="@font/montslight"
+                            android:padding="8dp"
+                            android:layout_marginBottom="24dp"
+                            android:hint="Развернутый ответ"
+                            android:inputType="textPassword"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Мои негативные качества личности, которые могут помешать мне в роли куратора"
+                            android:textSize="20sp"
+                            android:textColor="@color/purple_700"
+                            android:fontFamily="@font/montsbold"
+                            android:layout_marginBottom="8dp"/>
+                        <EditText
+                            android:id="@+id/ppp"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:background="#E8EAF6"
+                            android:fontFamily="@font/montslight"
+                            android:padding="8dp"
+                            android:layout_marginBottom="24dp"
+                            android:hint="Развернутый ответ"
+                            android:inputType="textPassword"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Опыт в студенчестве"
+                            android:textSize="20sp"
+                            android:textColor="@color/purple_700"
+                            android:fontFamily="@font/montsbold"
+                            android:layout_marginBottom="8dp"/>
+                        <EditText
+                            android:id="@+id/pppq"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:background="#E8EAF6"
+                            android:fontFamily="@font/montslight"
+                            android:padding="8dp"
+                            android:layout_marginBottom="24dp"
+                            android:hint="Развернутый ответ"
+                            android:inputType="textPassword"/>
                     </LinearLayout>
-
                 </ScrollView>
             </LinearLayout>
     <RelativeLayout

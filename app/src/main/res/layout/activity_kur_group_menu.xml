@@ -57,17 +57,14 @@
                 android:layout_marginLeft="10dp"
                 android:layout_alignParentRight="true"/>
         </RelativeLayout>
-        <!-- Контент: "Лекции", "Тесты", "Кейсы", "Игры" -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_marginTop="16dp"
             android:layout_marginVertical="120dp">
-
-            <!-- Кнопка "Лекции" -->
             <Button
-                android:id="@+id/btn_lectures"
+                android:id="@+id/btn_spisok"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Список"
@@ -76,10 +73,8 @@
                 android:background="@drawable/rounded_button"
                 android:textSize="20sp"
                 android:layout_marginBottom="8dp" />
-
-            <!-- Кнопка "Тесты" -->
             <Button
-                android:id="@+id/btn_tests"
+                android:id="@+id/btn_activnoct"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Активность"
@@ -90,7 +85,6 @@
                 android:layout_marginBottom="8dp" />
         </LinearLayout>
     </LinearLayout>
-    <!-- Нижний бар -->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -102,7 +96,7 @@
             android:layout_alignParentBottom="true">
 
             <ImageView
-                android:id="@+id/btn_profile"
+                android:id="@+id/btn_school"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_weight="1"
@@ -110,7 +104,7 @@
                 android:layout_gravity="center"/>
 
             <ImageView
-                android:id="@+id/btn_team"
+                android:id="@+id/btn_group"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_weight="1"
@@ -118,7 +112,7 @@
                 android:layout_gravity="center"/>
 
             <ImageView
-                android:id="@+id/btn_tasks"
+                android:id="@+id/btn_info"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_weight="1"

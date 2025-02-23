@@ -15,7 +15,7 @@
         android:background="@color/purple_500"
         android:padding="16dp">
         <TextView
-            android:id="@+id/btn_exit"
+            android:id="@+id/btn_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Назад"
@@ -71,14 +71,15 @@
                     android:layout_marginTop="16dp"
                     android:fontFamily="@font/montsbold"/>
                 <EditText
-                    android:id="@+id/answerInput"
+                    android:id="@+id/otvet"
                     android:layout_width="match_parent"
                     android:layout_height="270dp"
                     android:textSize="16sp"
                     android:background="#E8EAF6"
                     android:fontFamily="@font/montslight"
                     android:padding="8dp"
-                    android:layout_marginTop="8dp" />
+                    android:layout_marginTop="8dp"
+                    android:hint="Ответ"/>
             </LinearLayout>
         </ScrollView>
     </LinearLayout>
@@ -88,7 +89,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="50dp">
         <Button
-            android:id="@+id/loginButton"
+            android:id="@+id/enterButton"
             android:layout_width="280dp"
             android:layout_height="wrap_content"
             android:text="Отправить"

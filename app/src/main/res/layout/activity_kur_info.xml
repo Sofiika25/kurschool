@@ -98,7 +98,7 @@
             android:layout_alignParentBottom="true">
 
             <ImageView
-                android:id="@+id/btn_profile"
+                android:id="@+id/btn_school"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_weight="1"
@@ -106,7 +106,7 @@
                 android:layout_gravity="center"/>
 
             <ImageView
-                android:id="@+id/btn_team"
+                android:id="@+id/btn_group"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_weight="1"
@@ -114,7 +114,7 @@
                 android:layout_gravity="center"/>
 
             <ImageView
-                android:id="@+id/btn_tasks"
+                android:id="@+id/btn_info"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_weight="1"
