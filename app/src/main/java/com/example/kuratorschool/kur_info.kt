@@ -8,6 +8,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.firebase.auth.FirebaseAuth
 
 class kur_info : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,6 +22,7 @@ class kur_info : AppCompatActivity() {
         }
         val btnExit: TextView = findViewById(R.id.btn_exit)
         btnExit.setOnClickListener{
+            FirebaseAuth.getInstance().signOut()
             val intent = Intent(this, Authorization::class.java)
             startActivity(intent)
             finish()

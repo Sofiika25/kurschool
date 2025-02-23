@@ -9,6 +9,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.firebase.auth.FirebaseAuth
 
 class stud_menu : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,6 +35,7 @@ class stud_menu : AppCompatActivity() {
         }
         val btnBack: TextView = findViewById(R.id.btn_exit)
         btnBack.setOnClickListener{
+            FirebaseAuth.getInstance().signOut()
             val intent = Intent(this, Authorization::class.java)
             startActivity(intent)
             finish()
