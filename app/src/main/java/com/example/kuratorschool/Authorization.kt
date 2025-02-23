@@ -84,7 +84,6 @@ class Authorization : AppCompatActivity() {
     private fun checkUserRole(uid: String) {
         Log.d(TAG, "Проверка роли пользователя для uid: $uid")
         val usersRef = FirebaseDatabase.getInstance().getReference("Users").child(uid)
-        Log.d(TAG, "Обращаемся к узлу: ${usersRef.path}")
         usersRef.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 Log.d(TAG, "Получен snapshot: $snapshot")
