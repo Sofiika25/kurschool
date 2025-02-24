@@ -49,24 +49,11 @@
                 android:textSize="20sp"
                 android:gravity="center_horizontal"/>
         </RelativeLayout>
-        <RelativeLayout
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view_tests"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:gravity="center_vertical"
-            android:layout_marginVertical="60dp">
-            <TextView
-                android:id="@+id/test1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingVertical="5dp"
-                android:fontFamily="@font/montsregular"
-                android:text="Тест №1"
-                android:textAlignment="center"
-                android:textColor="@color/purple"
-                android:textColorLink="@color/purple_500"
-                android:textSize="20sp" />
-        </RelativeLayout>
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"/>
     </LinearLayout>
     <RelativeLayout
         android:layout_width="match_parent"

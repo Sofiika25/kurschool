@@ -64,4 +64,7 @@ dependencies {
     debugImplementation(libs.androidx.ui.test.manifest)
     implementation("com.google.firebase:firebase-database:20.2.2")
     implementation("com.google.firebase:firebase-auth:23.2.0")
+    implementation ("com.google.code.gson:gson:2.8.9")
+
+
 }
