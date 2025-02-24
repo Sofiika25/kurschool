@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@drawable/round_card">
+
+    <TextView
+        android:id="@+id/group_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Группа 4435"
+        android:textSize="18sp"
+        android:fontFamily="@font/montsbold"
+        android:textColor="#FFFFFF"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/students_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:nestedScrollingEnabled="false"/>
+</LinearLayout>
