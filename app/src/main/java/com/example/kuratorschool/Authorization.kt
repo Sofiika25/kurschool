@@ -36,7 +36,14 @@ class Authorization : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        FirebaseApp.initializeApp(this)
+        auth = FirebaseAuth.getInstance()
 
+        if (auth!!.currentUser != null) {
+            Log.d(TAG, "Пользователь уже авторизован, проверка роли: ${auth!!.currentUser!!.uid}")
+            checkUserRole(auth!!.currentUser!!.uid)
+            return
+        }
         val loginEditText = findViewById<EditText>(R.id.usernameEditText)
         val passwordEditText = findViewById<EditText>(R.id.passwordEditText)
         val loginButton = findViewById<Button>(R.id.loginButton)
