@@ -1,8 +1,12 @@
 package com.example.kuratorschool
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
 import android.widget.TextView
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -11,12 +15,14 @@ import com.example.kuratorschool.Models.Activity
 import com.example.kuratorschool.Models.Participant
 import com.google.firebase.database.*
 
+
 class activnosti_display : AppCompatActivity() {
 
     private lateinit var database: DatabaseReference
     private lateinit var recyclerView: RecyclerView
     private lateinit var activityAdapter: ActivityAdapter
     private val activitiesList = mutableListOf<Activity>()
+    private lateinit var addActivityLauncher: ActivityResultLauncher<Intent>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,7 +35,11 @@ class activnosti_display : AppCompatActivity() {
 
 
         database = FirebaseDatabase.getInstance().getReference("ActivityTracking")
-
+        addActivityLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result.resultCode == RESULT_OK) {
+                loadActivities()
+            }
+        }
         loadActivities()
     }
 
@@ -57,9 +67,18 @@ class activnosti_display : AppCompatActivity() {
                     activitiesList.add(activity)
                 }
 
-                btnBack.setOnClickListener {
-                    finish()
+                val addActivnostButton = findViewById<Button>(R.id.addActivButton)
+                addActivnostButton.setOnClickListener {
+                    val intent = Intent(this@activnosti_display, add_activnost::class.java)
+                    addActivityLauncher.launch(intent)
                 }
+
+
+                btnBack.setOnClickListener {
+                    val intent = Intent(this@activnosti_display, kur_group_menu::class.java)
+                    startActivity(intent)
+                }
+
                 activityAdapter.notifyDataSetChanged()
             }
 
