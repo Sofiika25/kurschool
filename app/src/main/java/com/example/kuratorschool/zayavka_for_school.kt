@@ -12,18 +12,28 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.kuratorschool.Models.Application
-import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.*
 import java.text.SimpleDateFormat
-import java.util.Date
-import java.util.Locale
+import java.util.*
 
 class zayavka_for_school : AppCompatActivity() {
     private val TAG = "ZayavkaForSchool"
-    val currentuserId = FirebaseAuth.getInstance().currentUser?.uid
+    private val currentUserId = FirebaseAuth.getInstance().currentUser?.uid
+    private val currentDate = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(Date())
 
-    val currentDate = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(Date())
+
+    private val MAX_FULLNAME_LENGTH = 100
+    private val MAX_GROUPNUMBER_LENGTH = 10
+    private val MAX_PHONE_LENGTH = 15
+    private val MIN_PHONE_LENGTH = 10
+    private val MAX_VKLINK_LENGTH = 200
+    private val MAX_TELEGRAM_LENGTH = 200
+    private val MAX_CURATOR_REASON_LENGTH = 500
+    private val MAX_POSITIVE_QUALITIES_LENGTH = 500
+    private val MAX_NEGATIVE_QUALITIES_LENGTH = 500
+    private val MAX_STUDENT_EXPERIENCE_LENGTH = 500
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -36,13 +46,6 @@ class zayavka_for_school : AppCompatActivity() {
 
 
         val btnBack: TextView = findViewById(R.id.btn_back)
-        btnBack.setOnClickListener {
-            val intent = Intent(this, school_info::class.java)
-            startActivity(intent)
-            finish()
-        }
-
-
         val etFullName = findViewById<EditText>(R.id.usernameEditText)
         val etGroupNumber = findViewById<EditText>(R.id.passwordEditText)
         val etPhone = findViewById<EditText>(R.id.jh)
@@ -52,8 +55,37 @@ class zayavka_for_school : AppCompatActivity() {
         val etPositiveQualities = findViewById<EditText>(R.id.pp)
         val etNegativeQualities = findViewById<EditText>(R.id.ppp)
         val etStudentExperience = findViewById<EditText>(R.id.pppq)
-
         val btnSubmit: Button = findViewById(R.id.loginButton)
+
+
+        btnBack.setOnClickListener {
+            startActivity(Intent(this, school_info::class.java))
+            finish()
+        }
+
+
+        if (currentUserId != null) {
+            val userRef = FirebaseDatabase.getInstance().getReference("Users").child(currentUserId)
+            userRef.addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    val fullNameFromDB = snapshot.child("full_name").getValue(String::class.java)
+                    val groupIdFromDB = snapshot.child("group_id").getValue(Int::class.java)
+                    if (!fullNameFromDB.isNullOrEmpty()) {
+                        etFullName.setText(fullNameFromDB)
+                        etFullName.isEnabled = false
+                    }
+                    if (groupIdFromDB != null) {
+                        etGroupNumber.setText(groupIdFromDB.toString())
+                        etGroupNumber.isEnabled = false
+                    }
+                }
+                override fun onCancelled(error: DatabaseError) {
+                    Toast.makeText(this@zayavka_for_school, "Ошибка загрузки данных пользователя", Toast.LENGTH_SHORT).show()
+                }
+            })
+        }
+
+
         btnSubmit.setOnClickListener {
             val fullName = etFullName.text.toString().trim()
             val groupNumber = etGroupNumber.text.toString().trim()
@@ -65,10 +97,113 @@ class zayavka_for_school : AppCompatActivity() {
             val negativeQualities = etNegativeQualities.text.toString().trim()
             val studentExperience = etStudentExperience.text.toString().trim()
 
-            if (fullName.isEmpty() || groupNumber.isEmpty() || phone.isEmpty()) {
-                Toast.makeText(this, "Пожалуйста, заполните обязательные поля", Toast.LENGTH_SHORT).show()
+
+            if (fullName.isEmpty()) {
+                etFullName.error = "Введите ФИО"
+                etFullName.requestFocus()
                 return@setOnClickListener
             }
+            if (groupNumber.isEmpty()) {
+                etGroupNumber.error = "Введите номер группы"
+                etGroupNumber.requestFocus()
+                return@setOnClickListener
+            }
+            if (phone.isEmpty()) {
+                etPhone.error = "Введите номер телефона"
+                etPhone.requestFocus()
+                return@setOnClickListener
+            }
+            if (vkLink.isEmpty()) {
+                etVkLink.error = "Введите ссылку VK"
+                etVkLink.requestFocus()
+                return@setOnClickListener
+            }
+            if (telegram.isEmpty()) {
+                etTelegram.error = "Введите аккаунт Telegram"
+                etTelegram.requestFocus()
+                return@setOnClickListener
+            }
+            if (curatorReason.isEmpty()) {
+                etCuratorReason.error = "Введите причину"
+                etCuratorReason.requestFocus()
+                return@setOnClickListener
+            }
+            if (positiveQualities.isEmpty()) {
+                etPositiveQualities.error = "Введите положительные качества"
+                etPositiveQualities.requestFocus()
+                return@setOnClickListener
+            }
+            if (negativeQualities.isEmpty()) {
+                etNegativeQualities.error = "Введите негативные качества"
+                etNegativeQualities.requestFocus()
+                return@setOnClickListener
+            }
+            if (studentExperience.isEmpty()) {
+                etStudentExperience.error = "Введите опыт в студенчестве"
+                etStudentExperience.requestFocus()
+                return@setOnClickListener
+            }
+
+
+            if (fullName.length > MAX_FULLNAME_LENGTH) {
+                etFullName.error = "ФИО не может превышать $MAX_FULLNAME_LENGTH символов"
+                etFullName.requestFocus()
+                return@setOnClickListener
+            }
+            if (groupNumber.length > MAX_GROUPNUMBER_LENGTH) {
+                etGroupNumber.error = "Номер группы не может превышать $MAX_GROUPNUMBER_LENGTH символов"
+                etGroupNumber.requestFocus()
+                return@setOnClickListener
+            }
+            if (phone.length < MIN_PHONE_LENGTH) {
+                etPhone.error = "Номер телефона слишком короткий"
+                etPhone.requestFocus()
+                return@setOnClickListener
+            }
+            if (phone.length > MAX_PHONE_LENGTH) {
+                etPhone.error = "Номер телефона не может превышать $MAX_PHONE_LENGTH символов"
+                etPhone.requestFocus()
+                return@setOnClickListener
+            }
+            if (vkLink.length > MAX_VKLINK_LENGTH) {
+                etVkLink.error = "Ссылка VK не может превышать $MAX_VKLINK_LENGTH символов"
+                etVkLink.requestFocus()
+                return@setOnClickListener
+            }
+            if (telegram.length > MAX_TELEGRAM_LENGTH) {
+                etTelegram.error = "Аккаунт Telegram не может превышать $MAX_TELEGRAM_LENGTH символов"
+                etTelegram.requestFocus()
+                return@setOnClickListener
+            }
+            if (curatorReason.length > MAX_CURATOR_REASON_LENGTH) {
+                etCuratorReason.error = "Ответ не может превышать $MAX_CURATOR_REASON_LENGTH символов"
+                etCuratorReason.requestFocus()
+                return@setOnClickListener
+            }
+            if (positiveQualities.length > MAX_POSITIVE_QUALITIES_LENGTH) {
+                etPositiveQualities.error = "Ответ не может превышать $MAX_POSITIVE_QUALITIES_LENGTH символов"
+                etPositiveQualities.requestFocus()
+                return@setOnClickListener
+            }
+            if (negativeQualities.length > MAX_NEGATIVE_QUALITIES_LENGTH) {
+                etNegativeQualities.error = "Ответ не может превышать $MAX_NEGATIVE_QUALITIES_LENGTH символов"
+                etNegativeQualities.requestFocus()
+                return@setOnClickListener
+            }
+            if (studentExperience.length > MAX_STUDENT_EXPERIENCE_LENGTH) {
+                etStudentExperience.error = "Ответ не может превышать $MAX_STUDENT_EXPERIENCE_LENGTH символов"
+                etStudentExperience.requestFocus()
+                return@setOnClickListener
+            }
+
+
+            val phoneRegex = Regex("^\\+?[0-9]{10,15}$")
+            if (!phone.matches(phoneRegex)) {
+                etPhone.error = "Неверный формат номера телефона"
+                etPhone.requestFocus()
+                return@setOnClickListener
+            }
+
 
             val application = Application(
                 fullName = fullName,
@@ -82,8 +217,9 @@ class zayavka_for_school : AppCompatActivity() {
                 studentExperience = studentExperience,
                 status = "на рассмотрении",
                 submissionDate = currentDate,
-                user_id=currentuserId
+                user_id = currentUserId
             )
+
 
             val dbRef = FirebaseDatabase.getInstance().getReference("Applications")
             val newApplicationRef = dbRef.push()
@@ -91,8 +227,7 @@ class zayavka_for_school : AppCompatActivity() {
                 if (task.isSuccessful) {
                     Toast.makeText(this, "Заявка отправлена. Статус: ${application.status}", Toast.LENGTH_SHORT).show()
                     Log.d(TAG, "Заявка успешно сохранена с ключом: ${newApplicationRef.key}")
-                    val intent = Intent(this, school_info::class.java)
-                    startActivity(intent)
+                    startActivity(Intent(this, school_info::class.java))
                     finish()
                 } else {
                     Toast.makeText(this, "Ошибка отправки заявки: ${task.exception?.message}", Toast.LENGTH_SHORT).show()

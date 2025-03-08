@@ -21,6 +21,10 @@ import java.text.SimpleDateFormat
 import java.util.Locale
 
 class case1 : AppCompatActivity() {
+
+
+    private val MAX_ANSWER_LENGTH = 500
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -44,6 +48,7 @@ class case1 : AppCompatActivity() {
         val etAnswer: EditText = findViewById(R.id.otvet)
         val btnSend: Button = findViewById(R.id.enterButton)
 
+
         val caseRef = FirebaseDatabase.getInstance().getReference("Cases").child(caseId)
         caseRef.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -53,32 +58,48 @@ class case1 : AppCompatActivity() {
                     tvQuestion.text = currentCase.question
                 }
             }
-
             override fun onCancelled(error: DatabaseError) {}
         })
 
         btnSend.setOnClickListener {
             val userAnswerText = etAnswer.text.toString().trim()
-            if (userAnswerText.isNotEmpty()) {
-                val currentUser = FirebaseAuth.getInstance().currentUser
-                if (currentUser != null) {
-                    val answer = UserAnswer(
-                        answer = userAnswerText,
-                        timestamp = getCurrentDateTime(),
-                    )
-                    caseRef.child("userAnswers").child(currentUser.uid)
-                        .setValue(answer)
-                        .addOnSuccessListener {
-                            Toast.makeText(this@case1, "Ответ успешно отправлен!", Toast.LENGTH_SHORT).show()
-                            setResult(RESULT_OK)
-                            finish()
-                        }
-                        .addOnFailureListener { e ->
-                            Toast.makeText(this@case1, "Ошибка: ${e.message}", Toast.LENGTH_SHORT).show()
-                        }
-                }
-            } else {
+
+
+            if (userAnswerText.isEmpty()) {
                 Toast.makeText(this@case1, "Введите ответ перед отправкой", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+
+            if (userAnswerText.length > MAX_ANSWER_LENGTH) {
+                Toast.makeText(
+                    this@case1,
+                    "Ответ не может превышать $MAX_ANSWER_LENGTH символов",
+                    Toast.LENGTH_SHORT
+                ).show()
+                return@setOnClickListener
+            }
+
+
+
+            val currentUser = FirebaseAuth.getInstance().currentUser
+            if (currentUser != null) {
+                val answer = UserAnswer(
+                    answer = userAnswerText,
+                    timestamp = getCurrentDateTime()
+                )
+                caseRef.child("userAnswers").child(currentUser.uid)
+                    .setValue(answer)
+                    .addOnSuccessListener {
+                        Toast.makeText(this@case1, "Ответ успешно отправлен!", Toast.LENGTH_SHORT).show()
+                        setResult(RESULT_OK)
+                        finish()
+                    }
+                    .addOnFailureListener { e ->
+                        Toast.makeText(this@case1, "Ошибка: ${e.message}", Toast.LENGTH_SHORT).show()
+                    }
+            } else {
+                Toast.makeText(this@case1, "Пользователь не авторизован", Toast.LENGTH_SHORT).show()
             }
         }
     }

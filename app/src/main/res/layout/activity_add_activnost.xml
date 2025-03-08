@@ -50,72 +50,74 @@
                 android:textSize="20sp"
                 android:gravity="center_horizontal"/>
         </RelativeLayout>
-        <ScrollView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/card_border"
-            android:paddingVertical="6dp">
-            <LinearLayout
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:padding="15dp"
+            android:background="@drawable/card_border">
+
+            <TextView
+                android:id="@+id/questionLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Название:"
+                android:textSize="18sp"
+                android:textColor="@color/purple"
+                android:fontFamily="@font/montsbold"/>
+
+            <EditText
+                android:id="@+id/answerInput"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:padding="15dp">
-                <TextView
-                    android:id="@+id/questionLabel"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Название:"
-                    android:textSize="18sp"
-                    android:textColor="@color/purple"
-                    android:fontFamily="@font/montsbold"/>
-                <EditText
-                    android:id="@+id/answerInput"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Ответ"
-                    android:textSize="16sp"
-                    android:background="#E8EAF6"
-                    android:fontFamily="@font/montslight"
-                    android:padding="8dp"
-                    android:layout_marginTop="8dp" />
-                <TextView
-                    android:id="@+id/question"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Дата:"
-                    android:textSize="18sp"
-                    android:textColor="@color/purple"
-                    android:fontFamily="@font/montsbold"/>
-                <EditText
-                    android:id="@+id/an"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Ответ"
-                    android:textSize="16sp"
-                    android:background="#E8EAF6"
-                    android:fontFamily="@font/montslight"
-                    android:padding="8dp"
-                    android:layout_marginTop="8dp" />
-                <TextView
-                    android:id="@+id/questionL"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="ФИО:"
-                    android:textSize="18sp"
-                    android:textColor="@color/purple"
-                    android:fontFamily="@font/montsbold"/>
-                <EditText
-                    android:id="@+id/answerI"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Ответ"
-                    android:textSize="16sp"
-                    android:background="#E8EAF6"
-                    android:fontFamily="@font/montslight"
-                    android:padding="8dp"
-                    android:layout_marginTop="8dp" />
-            </LinearLayout>
-        </ScrollView>
+                android:layout_height="wrap_content"
+                android:hint="Ответ"
+                android:textSize="16sp"
+                android:background="#E8EAF6"
+                android:fontFamily="@font/montslight"
+                android:padding="8dp"
+                android:layout_marginTop="8dp" />
+
+            <TextView
+                android:id="@+id/question"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Дата:"
+                android:textSize="18sp"
+                android:textColor="@color/purple"
+                android:fontFamily="@font/montsbold"
+                android:layout_marginTop="8dp"/>
+
+            <EditText
+                android:id="@+id/an"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Ответ"
+                android:textSize="16sp"
+                android:background="#E8EAF6"
+                android:fontFamily="@font/montslight"
+                android:padding="8dp"
+                android:layout_marginTop="8dp" />
+
+            <TextView
+                android:id="@+id/questionL"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ФИО:"
+                android:textSize="18sp"
+                android:textColor="@color/purple"
+                android:fontFamily="@font/montsbold"
+                android:layout_marginTop="8dp"/>
+
+            <!-- ListView занимает всё оставшееся пространство -->
+            <ListView
+                android:id="@+id/studentsListView"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:choiceMode="multipleChoice"
+                android:layout_marginTop="8dp" />
+        </LinearLayout>
     </LinearLayout>
     <RelativeLayout
         android:layout_width="wrap_content"

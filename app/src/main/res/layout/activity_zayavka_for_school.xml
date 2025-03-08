@@ -79,8 +79,7 @@
                             android:fontFamily="@font/montslight"
                             android:padding="8dp"
                             android:layout_marginBottom="24dp"
-                            android:hint="Введите номер группы"
-                            android:inputType="textPassword"/>
+                            android:hint="Введите номер группы" />
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
