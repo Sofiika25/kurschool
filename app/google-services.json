@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "816402341358",
+    "firebase_url": "https://diplom-eacde-default-rtdb.firebaseio.com",
+    "project_id": "diplom-eacde",
+    "storage_bucket": "diplom-eacde.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:816402341358:android:996cc77e7f9ff7ecb9c2ff",
+        "android_client_info": {
+          "package_name": "com.example.kuratorschool"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDwTCKUVw4QbXtz406DiGdbAUefKX9nAPE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
