@@ -45,7 +45,7 @@
             android:layout_marginVertical="14dp" />
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="420dp"
+            android:layout_height="460dp"
             android:background="@drawable/card_border"
             android:paddingVertical="6dp">
             <LinearLayout

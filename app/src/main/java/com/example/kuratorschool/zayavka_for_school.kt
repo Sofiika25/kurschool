@@ -16,7 +16,60 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import java.text.SimpleDateFormat
 import java.util.*
+import android.text.Editable
+import android.text.TextWatcher
 
+class PhoneNumberTextWatcher(private val editText: EditText) : TextWatcher {
+    private var isFormatting = false
+    private var deletingHyphen = false
+    private var hyphenStart = 0
+    private var deletingBackward = false
+
+    override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+        if (count > 0 && after == 0) {
+            deletingBackward = (s?.getOrNull(start) == '-')
+        }
+    }
+
+    override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+        // Ничего не делаем
+    }
+
+    override fun afterTextChanged(s: Editable?) {
+        if (isFormatting) {
+            return
+        }
+
+        isFormatting = true
+
+        val digits = s.toString().replace(Regex("[^\\d]"), "")
+        val length = digits.length
+        val formatted = StringBuilder()
+
+        if (length >= 1) {
+            formatted.append("+7 (")
+            if (length > 1) {
+                formatted.append(digits.substring(1, Math.min(4, length)))
+            }
+            if (length > 4) {
+                formatted.append(") ").append(digits.substring(4, Math.min(7, length)))
+            }
+            if (length > 7) {
+                formatted.append("-").append(digits.substring(7, Math.min(9, length)))
+            }
+            if (length > 9) {
+                formatted.append("-").append(digits.substring(9, Math.min(11, length)))
+            }
+        }
+
+        editText.removeTextChangedListener(this)
+        editText.setText(formatted.toString())
+        editText.setSelection(formatted.length)
+        editText.addTextChangedListener(this)
+
+        isFormatting = false
+    }
+}
 class zayavka_for_school : AppCompatActivity() {
     private val TAG = "ZayavkaForSchool"
     private val currentUserId = FirebaseAuth.getInstance().currentUser?.uid
@@ -25,7 +78,7 @@ class zayavka_for_school : AppCompatActivity() {
 
     private val MAX_FULLNAME_LENGTH = 100
     private val MAX_GROUPNUMBER_LENGTH = 10
-    private val MAX_PHONE_LENGTH = 15
+    private val MAX_PHONE_LENGTH = 25
     private val MIN_PHONE_LENGTH = 10
     private val MAX_VKLINK_LENGTH = 200
     private val MAX_TELEGRAM_LENGTH = 200
@@ -49,6 +102,7 @@ class zayavka_for_school : AppCompatActivity() {
         val etFullName = findViewById<EditText>(R.id.usernameEditText)
         val etGroupNumber = findViewById<EditText>(R.id.passwordEditText)
         val etPhone = findViewById<EditText>(R.id.jh)
+        etPhone.addTextChangedListener(PhoneNumberTextWatcher(etPhone))
         val etVkLink = findViewById<EditText>(R.id.pa)
         val etTelegram = findViewById<EditText>(R.id.u)
         val etCuratorReason = findViewById<EditText>(R.id.p)
@@ -197,12 +251,7 @@ class zayavka_for_school : AppCompatActivity() {
             }
 
 
-            val phoneRegex = Regex("^\\+?[0-9]{10,15}$")
-            if (!phone.matches(phoneRegex)) {
-                etPhone.error = "Неверный формат номера телефона"
-                etPhone.requestFocus()
-                return@setOnClickListener
-            }
+
 
 
             val application = Application(

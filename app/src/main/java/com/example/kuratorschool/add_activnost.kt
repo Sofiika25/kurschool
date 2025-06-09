@@ -1,5 +1,6 @@
 package com.example.kuratorschool
 
+import android.app.DatePickerDialog
 import android.os.Bundle
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
@@ -7,7 +8,7 @@ import com.example.kuratorschool.Models.Student
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import java.text.SimpleDateFormat
-import java.util.Locale
+import java.util.*
 
 class add_activnost : AppCompatActivity() {
     private lateinit var database: DatabaseReference
@@ -29,12 +30,12 @@ class add_activnost : AppCompatActivity() {
         val studentsListView: ListView = findViewById(R.id.studentsListView)
         val addButton: Button = findViewById(R.id.addButton)
 
+
         btnBack.setOnClickListener {
             finish()
         }
 
         val curatorId = auth.currentUser?.uid ?: "unknown"
-
 
         getGroupIdForCurator(curatorId) { groupId ->
             currentGroupId = groupId
@@ -78,6 +79,11 @@ class add_activnost : AppCompatActivity() {
             } else {
                 Toast.makeText(this, "Группа не найдена", Toast.LENGTH_SHORT).show()
             }
+        }
+
+        // Обработчик нажатия на поле ввода даты
+        activityDateInput.setOnClickListener {
+            showDatePickerDialog(activityDateInput)
         }
 
         addButton.setOnClickListener {
@@ -143,9 +149,65 @@ class add_activnost : AppCompatActivity() {
                     Toast.makeText(this, "Ошибка добавления", Toast.LENGTH_SHORT).show()
                 }
         }
-
     }
 
+    private fun showDatePickerDialog(activityDateInput: EditText) {
+        val calendar = Calendar.getInstance()
+        val year = calendar.get(Calendar.YEAR)
+        val month = calendar.get(Calendar.MONTH)
+        val day = calendar.get(Calendar.DAY_OF_MONTH)
+
+        // Загружаем кастомный макет
+        val datePickerView = layoutInflater.inflate(R.layout.custom_date_picker, null)
+        val datePicker = datePickerView.findViewById<DatePicker>(R.id.datePicker)
+
+        // Устанавливаем минимальную и максимальную даты
+        val minDate = Calendar.getInstance()
+        minDate.set(Calendar.YEAR, year)
+        minDate.set(Calendar.MONTH, Calendar.JANUARY)
+        minDate.set(Calendar.DAY_OF_MONTH, 1)
+        datePicker.minDate = minDate.timeInMillis
+
+        val maxDate = Calendar.getInstance()
+        datePicker.maxDate = maxDate.timeInMillis
+
+        // Инициализируем DatePicker текущей датой
+        datePicker.init(year, month, day, null)
+
+        // Создаем DatePickerDialog с кастомным макетом
+        val datePickerDialog = DatePickerDialog(
+            this,
+            R.style.CustomDatePickerDialogTheme, // Используем кастомный стиль
+            { _, selectedYear, selectedMonth, selectedDay ->
+                val formattedDate = String.format(Locale.getDefault(), "%02d.%02d.%d", selectedDay, selectedMonth + 1, selectedYear)
+                activityDateInput.setText(formattedDate)
+            },
+            year, // Эти значения игнорируются, так как используется кастомный макет
+            month,
+            day
+        )
+
+        datePickerDialog.setView(datePickerView) // Устанавливаем кастомный макет
+
+        // Устанавливаем слушатель для кнопки "OK"
+        datePickerDialog.setButton(DatePickerDialog.BUTTON_POSITIVE, "OK") { dialog, _ ->
+            val selectedYear = datePicker.year
+            val selectedMonth = datePicker.month
+            val selectedDay = datePicker.dayOfMonth
+
+            val formattedDate = String.format(Locale.getDefault(), "%02d.%02d.%d", selectedDay, selectedMonth + 1, selectedYear)
+            activityDateInput.setText(formattedDate)
+
+            dialog.dismiss()
+        }
+
+        // Устанавливаем слушатель для кнопки "Отмена"
+        datePickerDialog.setButton(DatePickerDialog.BUTTON_NEGATIVE, "Отмена") { dialog, _ ->
+            dialog.dismiss()
+        }
+
+        datePickerDialog.show()
+    }
 
     private fun getGroupIdForCurator(curatorId: String, callback: (Int) -> Unit) {
         groupsRef.orderByChild("curator_id").equalTo(curatorId)

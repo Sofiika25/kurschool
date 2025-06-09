@@ -16,7 +16,7 @@
             android:id="@+id/lectureTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Заголовок лекции"
+            android:text="Стипендия"
             android:textSize="20sp"
             android:fontFamily="@font/montsbold"
             android:textColor="@color/purple"

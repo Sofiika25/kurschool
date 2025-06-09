@@ -32,25 +32,16 @@ class kur_menu : AppCompatActivity() {
         btnLectures.setOnClickListener{
             val intent = Intent(this, lections_display::class.java)
             startActivity(intent)
-            finish()
         }
         val btnTests: Button = findViewById(R.id.btn_tests)
         btnTests.setOnClickListener{
             val intent = Intent(this, tests_display::class.java)
             startActivity(intent)
-            finish()
         }
         val btnCases: Button = findViewById(R.id.btn_cases)
         btnCases.setOnClickListener{
             val intent = Intent(this, cases_display::class.java)
             startActivity(intent)
-            finish()
-        }
-        val btnGames: Button = findViewById(R.id.btn_games)
-        btnGames.setOnClickListener{
-            val intent = Intent(this, stud_menu::class.java)
-            startActivity(intent)
-            finish()
         }
         val btnSchool: ImageView = findViewById(R.id.btn_school)
         btnSchool.setOnClickListener{

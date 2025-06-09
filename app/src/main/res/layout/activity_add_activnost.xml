@@ -92,12 +92,15 @@
                 android:id="@+id/an"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Ответ"
+                android:hint="Выберите дату"
                 android:textSize="16sp"
                 android:background="#E8EAF6"
                 android:fontFamily="@font/montslight"
                 android:padding="8dp"
-                android:layout_marginTop="8dp" />
+                android:layout_marginTop="8dp"
+                android:focusable="false"
+                android:clickable="true"
+                android:focusableInTouchMode="false" />
 
             <TextView
                 android:id="@+id/questionL"

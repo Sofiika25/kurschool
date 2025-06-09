@@ -63,17 +63,17 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:gravity="center_vertical"
-            android:layout_marginVertical="60dp">
+            android:layout_marginVertical="40dp">
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingVertical="5dp"
                 android:fontFamily="@font/montsregular"
-                android:text="Школа кураторов - это ляляллялялялялллялял Школа кураторов - это ляляллялялялялллялял Школа кураторов - это ляляллялялялялллялялШкола кураторов - это ляляллялялялялллялял"
+                android:text="Школа кураторов — это образовательная программа, направленная на подготовку студентов к роли кураторов академических групп. Основная цель школы — обучить студентов навыкам организации, коммуникации и управления, необходимым для эффективной работы с первокурсниками и помощи им в адаптации к учебному процессу."
                 android:textAlignment="center"
                 android:textColor="@color/purple"
                 android:textColorLink="@color/purple_500"
-                android:textSize="20sp" />
+                android:textSize="19sp" />
         </RelativeLayout>
     </LinearLayout>
     <RelativeLayout
@@ -83,7 +83,7 @@
         android:layout_marginBottom="50dp">
         <Button
             android:id="@+id/zayavkaButton"
-            android:layout_width="280dp"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:text="Подать заявку"
             android:fontFamily="@font/montsbold"

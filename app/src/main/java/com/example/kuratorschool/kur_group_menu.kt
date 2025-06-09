@@ -32,13 +32,11 @@ class kur_group_menu : AppCompatActivity() {
         btnSpisok.setOnClickListener{
             val intent = Intent(this, my_group_display::class.java)
             startActivity(intent)
-            finish()
         }
         val btnActiv: Button = findViewById(R.id.btn_activnoct)
         btnActiv.setOnClickListener{
             val intent = Intent(this, activnosti_display::class.java)
             startActivity(intent)
-            finish()
         }
         val btnSchool: ImageView = findViewById(R.id.btn_school)
         btnSchool.setOnClickListener{

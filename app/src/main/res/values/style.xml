@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="CustomDatePickerDialogTheme" parent="ThemeOverlay.MaterialComponents.Dialog">
+        <!-- Цвет фона -->
+        <item name="backgroundColor">@color/white</item>
+        <!-- Цвет текста -->
+        <item name="android:textColorPrimary">@color/purple_500</item>
+        <!-- Цвет акцента (кнопки и выделения) -->
+        <item name="colorAccent">@color/purple_700</item>
+        <!-- Цвет фона заголовка -->
+        <item name="colorPrimary">@color/purple_200</item>
+        <!-- Цвет текста заголовка -->
+        <item name="android:textColorSecondary">@color/purple_200</item>
+    </style>
+</resources>

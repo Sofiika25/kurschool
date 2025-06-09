@@ -23,7 +23,11 @@ class info_display : AppCompatActivity() {
         btnBack.setOnClickListener{
             val intent = Intent(this, stud_menu::class.java)
             startActivity(intent)
-            finish()
+        }
+        val stip: TextView = findViewById(R.id.stip)
+        stip.setOnClickListener {
+            val intent = Intent(this, info_stipendiya::class.java)
+            startActivity(intent)
         }
     }
 }

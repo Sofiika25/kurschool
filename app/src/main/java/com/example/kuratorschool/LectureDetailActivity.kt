@@ -1,6 +1,7 @@
 package com.example.kuratorschool
 
 import android.os.Bundle
+import android.text.Html
 import android.util.Log
 import android.widget.TextView
 import android.widget.Toast
@@ -37,7 +38,10 @@ class LectureDetailActivity : AppCompatActivity() {
                 val lecture = snapshot.getValue(Lecture::class.java)
                 if (lecture != null) {
                     lectureTitle.text = lecture.title
-                    lectureContent.text = lecture.content
+
+                    // Используем Html.fromHtml() для форматирования текста
+                    val formattedContent = Html.fromHtml(lecture.content)
+                    lectureContent.text = formattedContent
                 } else {
                     Log.e(TAG, "Lecture data is null")
                     Toast.makeText(this@LectureDetailActivity, "Не удалось загрузить лекцию", Toast.LENGTH_SHORT).show()

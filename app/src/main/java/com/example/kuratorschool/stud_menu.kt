@@ -25,13 +25,11 @@ class stud_menu : AppCompatActivity() {
         infolay.setOnClickListener{
             val intent = Intent(this, info_display::class.java)
             startActivity(intent)
-            finish()
         }
         val schoollay: LinearLayout = findViewById(R.id.school_lay)
         schoollay.setOnClickListener{
             val intent = Intent(this, school_info::class.java)
             startActivity(intent)
-            finish()
         }
         val btnBack: TextView = findViewById(R.id.btn_exit)
         btnBack.setOnClickListener{

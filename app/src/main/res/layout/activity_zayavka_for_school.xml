@@ -98,7 +98,7 @@
                             android:padding="8dp"
                             android:layout_marginBottom="16dp"
                             android:hint="Введите номер телефона"
-                            android:inputType="number"/>
+                            android:inputType="phone"/>
 
                         <TextView
                             android:layout_width="wrap_content"
